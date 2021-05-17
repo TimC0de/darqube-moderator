@@ -1,5 +1,8 @@
 # DarQube Moderator
-Test task for DarQube company. Library for filtering swear words.
+Test task for DarQube company.
+Library for filtering swear words.
+
+Tested on Ubuntu WSL
 
 ## Requirements
 cmake >= 3.9.2
