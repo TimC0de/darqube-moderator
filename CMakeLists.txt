@@ -45,10 +45,7 @@ file(GLOB etc_files RELATIVE_PATH "etc/*")
 file(COPY ${etc_files} DESTINATION "${CMAKE_BINARY_DIR}/etc")
 
 # Building moderator
-add_library(
-        moderator
-        ${moderator_cpps}
-        )
+add_library(moderator SHARED ${moderator_cpps})
 
 target_include_directories(moderator PUBLIC "${PROJECT_SOURCE_DIR}/include")
 target_include_directories(moderator PUBLIC "${PROJECT_SOURCE_DIR}/src")
@@ -57,7 +54,8 @@ find_library(jsoncpp NAMES jsoncpp PATHS lib)
 target_link_libraries(moderator ${jsoncpp})
 
 install(TARGETS moderator
-  LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}
+  LIBRARY DESTINATION lib
+  RUNTIME DESTINATION lib
 )
 
 # Enabling CTest
