@@ -1,0 +1,6 @@
+build
+bin
+
+# Run install_dependencies.sh to initialize following folders
+include
+lib

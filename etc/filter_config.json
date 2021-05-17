@@ -1,0 +1,13 @@
+{
+	"censor_char": "*",
+	"filtering": "full",
+	// "filtering": "partly",
+	// "filtering": {
+	// 	"type": "regex",
+	// 	"match_word": "^(\\w)\\.*(\\w)$",
+	// 	"replace_pattern": "$1{{CENSORED_PART}}$2",
+	// }, - TODO: Resolve problems related to this filtering option. DO NOT USE!
+	// "filtering": "abracadabra", // - Fucking => F#$%^&g - TODO
+	// "filtering": "word-replace", // - Fuck => fork - TODO
+	// "filtering": "none"
+}
