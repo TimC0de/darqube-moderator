@@ -41,6 +41,7 @@ else()
     set(DEFAULT_LIBRARY_TYPE "SHARED")
 endif()
 
+# Etc files copying to build directory
 file(GLOB etc_files RELATIVE_PATH "etc/*")
 file(COPY ${etc_files} DESTINATION "${CMAKE_BINARY_DIR}/etc")
 
@@ -50,13 +51,21 @@ add_library(moderator SHARED ${moderator_cpps})
 target_include_directories(moderator PUBLIC "${PROJECT_SOURCE_DIR}/include")
 target_include_directories(moderator PUBLIC "${PROJECT_SOURCE_DIR}/src")
 
-find_library(jsoncpp NAMES jsoncpp PATHS lib)
+## Importing jsoncpp library
+add_library(jsoncpp SHARED IMPORTED)
+set_target_properties(jsoncpp PROPERTIES IMPORTED_LOCATION "${PROJECT_SOURCE_DIR}/lib")
+
 target_link_libraries(moderator ${jsoncpp})
 
 install(TARGETS moderator
   LIBRARY DESTINATION lib
   RUNTIME DESTINATION lib
 )
+
+install(DIRECTORY lib DESTINATION .)
+
+# Installing headers
+install(DIRECTORY include/json DESTINATION include)
 
 # Enabling CTest
 if(CMAKE_BUILD_TYPE STREQUAL "DEBUG")
